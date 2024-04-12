@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link href="../static/main.css" th:href="@{/main.css}" rel="stylesheet" />
+    <title>2.3.1</title>
+</head>
+<body>
+<h1>USERS TABLE</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="user : ${users}">
+
+        <td th:text="${user.getId()}">value</td>
+        <td th:text="${user.getName()}">value</td>
+        <td th:text="${user.getLastName()}">value</td>
+        <td th:text="${user.getEmail()}">value</td>
+        <td><a class="a-style" th:href="@{/update?id={id}(id=${user.getId()})}">Edit</a></td>
+        <td><a class="a-style" th:href="@{/delete?id={id}(id=${user.getId()})}"
+               onclick="return confirm('Are you sure?')">Delete</a></td>
+    </tr>
+</table>
+<p class="p-style"><a class="a-style" href="/create">Create user</a></p>
+
+
+
+</body>
+</html>
